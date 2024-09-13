@@ -22,6 +22,11 @@ flutter:
   assets:
     - assets/images/profile_picture.png
     - assets/images/project_image.png
+    - assets/images/person1.png
+    - assets/images/person2.png
+    - assets/images/person3.png
+    - assets/images/person4.png
+    - assets/images/person1.png
     
     
     

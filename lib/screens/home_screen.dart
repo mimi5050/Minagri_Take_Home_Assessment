@@ -79,9 +79,14 @@ class HomeScreen extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: [
-            DrawerHeader(child: Text('Menu')),
-            ListTile(title: Text('Option 1')),
-            ListTile(title: Text('Option 2')),
+            DrawerHeader(child: Text('Task Management App')),
+            ListTile(title: Text('Home')),
+            ListTile(title: Text('Pages')),
+            ListTile(title: Text('Components')),
+            ListTile(title: Text('Profile')),
+            ListTile(title: Text('Chat')),
+            ListTile(title: Text('Logout')),
+
           ],
         ),
       ),
@@ -253,6 +258,14 @@ class HomeScreen extends StatelessWidget {
                     CircleAvatar(
                       radius: 15,
                       backgroundImage: AssetImage('assets/images/person3.png'),
+                    ),
+                     CircleAvatar(
+                      radius: 15,
+                      backgroundImage: AssetImage('assets/images/person4.png'),
+                    ),
+                     CircleAvatar(
+                      radius: 15,
+                      backgroundImage: AssetImage('assets/images/person5.png'),
                     ),
                   ],
                 ),
