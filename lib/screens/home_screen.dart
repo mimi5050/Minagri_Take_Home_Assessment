@@ -214,7 +214,6 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 color: Colors.deepPurple[400],
                 borderRadius: BorderRadius.circular(10),
-            
               ),
               child: Padding(
                 padding: EdgeInsets.all(8.0),
@@ -367,19 +366,38 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.all(8),
             child: Image.asset(imagePath, fit: BoxFit.cover, height: 150),
           ),
+          // Margin-Bottom for the Project Image
+          SizedBox(height: 20),
+          // Images and Progress Bar
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Stacked User Avatars
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: List.generate(4, (index) {
+                    return Positioned(
+                      left: index * 10.0,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/profile_picture.png'),
+                        radius: 12,
+                      ),
+                    );
+                  }),
+                ),
+                SizedBox(width: 8),
+                // Progress Bar
                 Expanded(
                   child: Stack(
                     children: [
                       Container(
-                        height: 4,
+                        height: 8, // Increased height for the progress bar
                         color: Colors.blue[100],
                       ),
                       Container(
-                        height: 4,
+                        height: 8, // Increased height for the progress bar
                         width: progress * 2.5,
                         color: Colors.blue,
                       ),
@@ -389,20 +407,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(width: 8),
                 Text('$progress%'),
               ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Row(
-              children: List.generate(3, (index) {
-                return Padding(
-                  padding: EdgeInsets.only(right: 8),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/profile_picture.png'),
-                    radius: 12,
-                  ),
-                );
-              }),
             ),
           ),
         ],
