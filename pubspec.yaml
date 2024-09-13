@@ -1,0 +1,27 @@
+name: flutter_application_ihaha
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+
+environment:
+  sdk: ^3.5.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  font_awesome_flutter: ^10.4.0  # Add Font Awesome package here
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/profile_picture.png
+    - assets/images/project_image.png
+    
+    
+    
