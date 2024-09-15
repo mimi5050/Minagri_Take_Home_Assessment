@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -127,164 +129,164 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple[400],
-        title: Row(
-          children: [
-            Stack(
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/profile_picture.png'),
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      backgroundColor: Colors.deepPurple[400],
+      title: Row(
+        children: [
+          Stack(
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/images/profile_picture.png'),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.green,
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
                 ),
+              ),
+            ],
+          ),
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Jennifer', style: TextStyle(color: Colors.white, fontSize: 16)),
+              Text('Hi Jennifer, Good Morning!', style: TextStyle(color: Colors.white, fontSize: 12)),
+            ],
+          ),
+          Spacer(),
+          IconButton(
+            icon: Stack(
+              children: [
+                Icon(Icons.notifications, color: Colors.white),
                 Positioned(
-                  bottom: 0,
+                  top: 0,
                   right: 0,
                   child: Container(
                     width: 10,
                     height: 10,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.green,
-                      border: Border.all(color: Colors.white, width: 2),
+                      color: Colors.red,
+                      border: Border.all(color: Colors.white, width: 1),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.menu, color: Colors.white),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ],
+      ),
+    ),
+    drawer: Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(child: Text('Task Management App')),
+          ListTile(title: Text('Home')),
+          ListTile(title: Text('Pages')),
+          ListTile(title: Text('Components')),
+          ListTile(title: Text('Profile')),
+          ListTile(title: Text('Chat')),
+          ListTile(title: Text('Logout')),
+        ],
+      ),
+    ),
+    body: SingleChildScrollView(  // Wrapping Column in SingleChildScrollView
+      child: Column(
+        children: [
+          Container(
+            color: Colors.deepPurple[400], // Same background color as the AppBar
+            child: Column(
               children: [
-                Text('Jennifer', style: TextStyle(color: Colors.white, fontSize: 16)),
-                Text('Hi Jennifer, Good Morning!', style: TextStyle(color: Colors.white, fontSize: 12)),
-              ],
-            ),
-            Spacer(),
-            IconButton(
-              icon: Stack(
-                children: [
-                  Icon(Icons.notifications, color: Colors.white),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Container(
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.red,
-                        border: Border.all(color: Colors.white, width: 1),
-                      ),
+                // Search Section
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple[400], // Background matching the AppBar
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ),
-                ],
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            ),
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(child: Text('Task Management App')),
-            ListTile(title: Text('Home')),
-            ListTile(title: Text('Pages')),
-            ListTile(title: Text('Components')),
-            ListTile(title: Text('Profile')),
-            ListTile(title: Text('Chat')),
-            ListTile(title: Text('Logout')),
-          ],
-        ),
-      ),
-      body: Column(
-          children: [
-            // Container with the app bar's background color
-            Container(
-              color: Colors.deepPurple[400], // Same background color as the AppBar
-              child: Column(
-                children: [
-                  // Search Section
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple[400], // Background matching the AppBar
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white, // Keep the search field white
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400]),
-                              hintText: 'nft website de',
-                              hintStyle: TextStyle(color: Colors.deepPurple[400]),
-                              border: InputBorder.none,
-                            ),
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white, // Keep the search field white
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400]),
+                            hintText: 'nft website de',
+                            hintStyle: TextStyle(color: Colors.deepPurple[400]),
+                            border: InputBorder.none,
                           ),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            
-            // Recent Projects Section (white background remains unchanged)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Recent Projects',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // View all projects action
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Text(
-                      'View All',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            
-            // Recent Projects Cards Section
-            Expanded(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  projectCard('assets/images/project1.png', 'Gaming Platform Web &\nMobile App', 'June 22, 2024', 75, 10),
-                  projectCard('assets/images/project2.png', 'Furniture Web & Mobile App', 'March 29, 2024', 60, 5),
-                ],
-              ),
-            ),
-            // Today's Task Section
+          ),
+          
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Recent Projects',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // View all projects action
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Text(
+                    'View All',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          // Recent Projects Cards Section
+          SizedBox(
+            height: 312,  // Set a specific height for ListView
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                projectCard('assets/images/project1.png', 'Gaming Platform Web &\nMobile App', 'June 22, 2024', 75, 10),
+                projectCard('assets/images/project2.png', 'Furniture Web & Mobile App', 'March 29, 2024', 60, 5),
+              ],
+            ),
+          ),
+          
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0).copyWith(top: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -310,38 +312,57 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          
-          ],
-        ),
-        
-        
-      floatingActionButton: FloatingActionButton(
-        onPressed: _openCreateProjectDialog,
-        backgroundColor: const Color.fromARGB(255, 165, 135, 170),
-        child: Icon(Icons.add, color: Colors.black),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task),
-            label: 'Tasks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 4,
+              child: ListTile(
+                leading: Icon(Icons.business_center, color: Colors.purple),
+                title: Text(
+                  'Fintech Project',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text('Complete by today'),
+                trailing: Icon(Icons.check_circle, color: Colors.green),
+              ),
+            ),
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.purple[400],
-        onTap: _onItemTapped,
       ),
-    );
-  }
+    ),
+    
+    floatingActionButton: FloatingActionButton(
+      onPressed: _openCreateProjectDialog,
+      backgroundColor: const Color.fromARGB(255, 165, 135, 170),
+      child: Icon(Icons.add, color: Colors.black),
+    ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    bottomNavigationBar: BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.task),
+          label: 'Tasks',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.purple[400],
+      onTap: _onItemTapped,
+    ),
+  );
+}
+
 
 // Updated Project Card Widget with Reduced Space Between Profile Pictures
 Widget projectCard(String imagePath, String projectName, String date, int progress, int comments) {
