@@ -206,84 +206,83 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Column(
-        children: [
-          // Container with the app bar's background color
-          Container(
-            color: Colors.deepPurple[400], // Same background color as the AppBar
-            child: Column(
-              children: [
-                // Search Section
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple[400], // Background matching the AppBar
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white, // Keep the search field white
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400]),
-                            hintText: 'Search...',
-                            hintStyle: TextStyle(color: Colors.deepPurple[400]),
-                            border: InputBorder.none,
+          children: [
+            // Container with the app bar's background color
+            Container(
+              color: Colors.deepPurple[400], // Same background color as the AppBar
+              child: Column(
+                children: [
+                  // Search Section
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple[400], // Background matching the AppBar
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white, // Keep the search field white
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400]),
+                              hintText: 'nft website de',
+                              hintStyle: TextStyle(color: Colors.deepPurple[400]),
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          
-          // Recent Projects Section
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Recent Projects',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // View all projects action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+            
+            // Recent Projects Section (white background remains unchanged)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recent Projects',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // View all projects action
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Text(
+                      'View All',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
-                  child: Text(
-                    'View All',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          
-          // Recent Projects Cards Section
-          Expanded(
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                projectCard('assets/images/project1.png', 'Gaming Platform Web &\nMobile App', 'June 22, 2024', 75, 10),
-                projectCard('assets/images/project2.png', 'Furniture Web & Mobile App', 'March 29, 2024', 60, 5),
-              ],
+            
+            // Recent Projects Cards Section
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  projectCard('assets/images/project1.png', 'Gaming Platform Web &\nMobile App', 'June 22, 2024', 75, 10),
+                  projectCard('assets/images/project2.png', 'Furniture Web & Mobile App', 'March 29, 2024', 60, 5),
+                ],
+              ),
             ),
-          ),
-          
-          // Today's Task Section
+            // Today's Task Section
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
@@ -312,31 +311,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           
-          // Today's Task List
-          Expanded(
-            child: ListView(
-              children: [
-                ListTile(
-                  leading: Icon(Icons.task_alt, color: Colors.deepPurple[400]),
-                  title: Text('Task 1'),
-                  subtitle: Text('Due Today'),
-                ),
-                ListTile(
-                  leading: Icon(Icons.task_alt, color: Colors.deepPurple[400]),
-                  title: Text('Task 2'),
-                  subtitle: Text('Due Today'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-
+          ],
+        ),
+        
+        
       floatingActionButton: FloatingActionButton(
         onPressed: _openCreateProjectDialog,
         backgroundColor: const Color.fromARGB(255, 165, 135, 170),
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: Colors.black),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -344,7 +328,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.task),
             label: 'Tasks',
           ),
           BottomNavigationBarItem(
@@ -353,69 +337,162 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepPurple[400],
+        selectedItemColor: Colors.purple[400],
         onTap: _onItemTapped,
       ),
     );
   }
 
-  Widget projectCard(String imagePath, String title, String date, int completion, int teamSize) {
-    return Container(
-      width: 200,
-      margin: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-            child: Image.asset(imagePath, fit: BoxFit.cover, height: 100, width: double.infinity),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(date, style: TextStyle(color: Colors.grey)),
-                Row(
-                  children: [
-                    Icon(Icons.group, size: 16, color: Colors.grey),
-                    SizedBox(width: 4),
-                    Text('$teamSize', style: TextStyle(color: Colors.grey)),
-                  ],
+// Updated Project Card Widget with Reduced Space Between Profile Pictures
+Widget projectCard(String imagePath, String projectName, String date, int progress, int comments) {
+  return Container(
+    width: 300,
+    margin: EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black12)],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Project Icon with Background
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.lightGreen,
+                  shape: BoxShape.circle,
                 ),
-              ],
-            ),
+                child: Icon(Icons.work, color: Colors.black),
+              ),
+              // Project name bold
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Text(
+                    projectName,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ),
+              Icon(Icons.more_vert),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            child: LinearProgressIndicator(
-              value: completion / 100,
-              backgroundColor: Colors.grey[300],
-              color: Colors.deepPurple[400],
-            ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.calendar_today, size: 14),
+                  SizedBox(width: 4),
+                  Text(date),
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(Icons.comment, size: 14),
+                  SizedBox(width: 4),
+                  Text('$comments'),
+                  SizedBox(width: 16),
+                  Icon(Icons.share, size: 14),
+                  SizedBox(width: 4),
+                  Text('Share'),
+                ],
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('${completion}% Completed', style: TextStyle(color: Colors.grey)),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8),
+          child: Image.asset(imagePath, fit: BoxFit.cover, height: 150),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Profile pictures and progress label + bar in a row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Profile pictures with reduced spacing
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/person1.png'),
+                        radius: 12,
+                      ),
+                      SizedBox(width:0), // Reduced spacing by 20px
+                      CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/person2.png'),
+                        radius: 12,
+                      ),
+                      SizedBox(width: 0),
+                      CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/person3.png'),
+                        radius: 12,
+                      ),
+                    ],
+                  ),
+                  // Progress label and bar
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Progress label
+                          Text(
+                            'Progress',
+                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 4),
+                          // Progress bar
+                          Stack(
+                            children: [
+                              Container(
+                                height: 8, // Thickness of the progress bar
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[100],
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                              Container(
+                                height: 6, // Thickness of the progress bar
+                                width: progress * 2.5,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Progress percentage
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text('$progress%'),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 }

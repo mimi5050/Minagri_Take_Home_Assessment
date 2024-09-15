@@ -282,10 +282,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            // Today's Task Section
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Today\'s Tasks',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // View all tasks action
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Text(
+                    'View All',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
           ],
         ),
-
-
+        
+        
       floatingActionButton: FloatingActionButton(
         onPressed: _openCreateProjectDialog,
         backgroundColor: const Color.fromARGB(255, 165, 135, 170),
