@@ -12,47 +12,34 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Create a project", style: TextStyle(fontSize: 18)),
-              IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+          title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Create a project", 
+            style: TextStyle(fontSize: 18)),
+            IconButton(icon: Icon(Icons.close),onPressed: () {Navigator.of(context).pop();}, ),
             ],
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
+          content: Column(mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Project Name",
-                  border: OutlineInputBorder(),
-                ),
-              ),
+              TextField(decoration: InputDecoration( labelText: "Project Name",
+               border: OutlineInputBorder(),),),
+          
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      side: BorderSide(color: Colors.purple),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                  ElevatedButton.icon( onPressed: () {},
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.white,
+                  side: BorderSide(color: const Color.fromARGB(255, 84, 54, 155)),
+                      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    icon: Icon(Icons.list, color: Colors.purple),
-                    label: Text("List", style: TextStyle(color: Colors.purple)),
+                    icon: Icon(Icons.list, color: const Color.fromRGBO(126, 87, 194, 1)),
+                    label: Text("List", style: TextStyle(color: Colors.deepPurple[400])),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Colors.deepPurple[400],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -83,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     value: "private",
                     child: Row(
                       children: [
-                        Icon(Icons.lock, color: Colors.red),
+                        Icon(Icons.lock, color: Colors.deepPurple[400]),
                         SizedBox(width: 10),
                         Text("Private"),
                       ],
@@ -96,12 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple,
+                  backgroundColor: Colors.deepPurple[400],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: Text(
+                child: Text( 
                   "Create Project",
                   style: TextStyle(color: Colors.white),
                 ),
@@ -162,6 +149,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Spacer(),
+            
+            IconButton(
+              icon: Icon(Icons.menu, color: Colors.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),
             IconButton(
               icon: Stack(
                 children: [
@@ -182,12 +176,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
             ),
           ],
         ),
@@ -228,10 +216,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: TextField(
+                            
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400]),
+                              prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400],),
                               hintText: 'nft website de',
-                              hintStyle: TextStyle(color: Colors.deepPurple[400]),
+                              hintStyle: TextStyle(color: Colors.white, backgroundColor: Colors.deepPurple[400],), 
                               border: InputBorder.none,
                             ),
                           ),
@@ -257,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       // View all projects action
                     },
-                    style: ElevatedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -288,8 +277,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: _openCreateProjectDialog,
-        backgroundColor: const Color.fromARGB(255, 165, 135, 170),
-        child: Icon(Icons.add, color: Colors.black),
+        backgroundColor: const Color.fromRGBO(126, 87, 194, 1),
+        child: Icon(Icons.add, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
@@ -313,8 +302,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-// Updated Project Card Widget with Reduced Space Between Profile Pictures
 Widget projectCard(String imagePath, String projectName, String date, int progress, int comments) {
   return Container(
     width: 300,
@@ -341,13 +328,13 @@ Widget projectCard(String imagePath, String projectName, String date, int progre
                 ),
                 child: Icon(Icons.work, color: Colors.black),
               ),
-              // Project name bold
+              // Make the project name bold
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Text(
                     projectName,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // Bold text
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -388,76 +375,49 @@ Widget projectCard(String imagePath, String projectName, String date, int progre
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              // Profile pictures and progress label + bar in a row
+              // Images in front of the progress bar
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(5, (index) {
+                  return Padding(
+                    padding: EdgeInsets.only(right: -6), // Reduced spacing between images by 10px
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile_picture.png'),
+                      radius: 12,
+                    ),
+                  );
+                }),
+              ),
+              SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Profile pictures with reduced spacing
-                  Row(
+                  // Progress label
+                  Text(
+                    "Progress",
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 4),
+                  // Progress bar with increased thickness
+                  Stack(
                     children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/person1.png'),
-                        radius: 12,
+                      Container(
+                        height: 8, // Increased thickness
+                        width: 180,
+                        color: Colors.blue[100],
                       ),
-                      SizedBox(width:0), // Reduced spacing by 20px
-                      CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/person2.png'),
-                        radius: 12,
-                      ),
-                      SizedBox(width: 0),
-                      CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/person3.png'),
-                        radius: 12,
+                      Container(
+                        height: 8,
+                        width: progress * 2.5, // Width based on progress
+                        color: Colors.blue,
                       ),
                     ],
                   ),
-                  // Progress label and bar
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Progress label
-                          Text(
-                            'Progress',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 4),
-                          // Progress bar
-                          Stack(
-                            children: [
-                              Container(
-                                height: 8, // Thickness of the progress bar
-                                decoration: BoxDecoration(
-                                  color: Colors.blue[100],
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              ),
-                              Container(
-                                height: 6, // Thickness of the progress bar
-                                width: progress * 2.5,
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // Progress percentage
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text('$progress%'),
-                  ),
                 ],
               ),
+              SizedBox(width: 8),
+              Text('$progress%'),
             ],
           ),
         ),
@@ -465,5 +425,6 @@ Widget projectCard(String imagePath, String projectName, String date, int progre
     ),
   );
 }
+
 
 }
