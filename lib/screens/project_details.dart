@@ -93,92 +93,125 @@ class _ProjectDetailsState extends State<ProjectDetails> {
             
             SizedBox(height: 16),
 
-            // Team Section
-            Text(
-              'Team Members',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Row(
-          children: [
-            teamMemberAvatar('assets/images/person1.png'),
-            teamMemberAvatar('assets/images/person2.png'),
-            teamMemberAvatar('assets/images/person3.png'),
-          ],
-        ),
-
-            SizedBox(height: 16),
-
-            // Leader Section
-            Text(
-              'Team Leader',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Row(
+            // Organized Content (Team, Team Leader, Status, Due Date, Attachments)
+            Table(
+              columnWidths: {
+                0: FlexColumnWidth(), // Expands the first column flexibly
+                1: FlexColumnWidth(), // Expands the second column flexibly
+              },
               children: [
-                CircleAvatar(
-                  radius: 24,
-                  backgroundImage: AssetImage('assets/images/person1.png'),
-                ),
-                SizedBox(width: 8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                // Team Row
+                TableRow(
                   children: [
-                    Text('Jeanine Uwase', style: TextStyle(fontSize: 16)),
-                    Text('Lead Developer', style: TextStyle(color: Colors.grey)),
+                    _buildTitleWithIcon('Team', Icons.group),
+                    Row(
+                      children: [
+                        teamMemberAvatar('assets/images/person1.png'),
+                        SizedBox(width: 8), // Spacing between avatars
+                        teamMemberAvatar('assets/images/person2.png'),
+                        SizedBox(width: 8), // Spacing between avatars
+                        teamMemberAvatar('assets/images/person3.png'),
+                      ],
+                    ),
+                  ],
+                ),
+                TableRow(
+                  children: [SizedBox(height: 16), SizedBox(height: 16)],
+                ),
+                
+                // Team Leader Row
+                TableRow(
+                  children: [
+                    _buildTitleWithIcon('Team Leader', Icons.person),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage('assets/images/person1.png'),
+                        ),
+                        SizedBox(width: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Jeanine Uwase', style: TextStyle(fontSize: 12)),
+                            Text('(You)', style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                TableRow(
+                  children: [SizedBox(height: 16), SizedBox(height: 16)],
+                ),
+                
+                // Status Row
+                TableRow(
+                  children: [
+                    _buildTitleWithIcon('Status', Icons.assignment_turned_in),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFE91E63),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: 120), // Reduced width
+                        child: Text(
+                          'To Do',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                TableRow(
+                  children: [SizedBox(height: 16), SizedBox(height: 16)],
+                ),
+                
+                // Due Date Row
+                TableRow(
+                  children: [
+                    _buildTitleWithIcon('Due Date', Icons.date_range),
+                    Text('September 30, 2024', style: TextStyle(fontSize: 14)),
+                  ],
+                ),
+                TableRow(
+                  children: [SizedBox(height: 16), SizedBox(height: 16)],
+                ),
+                
+                // Attachments Row
+                TableRow(
+                  children: [
+                    _buildTitleWithIcon('Attachments', Icons.attach_file),
+                    Row(
+                      children: [
+                        Icon(Icons.picture_as_pdf, color: Colors.red),
+                        SizedBox(width: 8),
+                        Text('Reference.pdf', style: TextStyle(fontSize: 12)),
+                        Spacer(),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Add PDF attachment functionality
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepPurple[400], // Background color
+                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4), // Adjusted padding
+                            textStyle: TextStyle(fontSize: 12), // Reduced font size
+                          ),
+                          child: Text(
+                            '+ Add',
+                            style: TextStyle(color: Colors.white), // Text color
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 16),
-
-            // Due Date Section
-            Row(
-              children: [
-                Icon(Icons.date_range, color: Colors.grey),
-                SizedBox(width: 8),
-                Text(
-                  'Due Date: September 30, 2024',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
-
-            // Date Created Section
-            Row(
-              children: [
-                Icon(Icons.calendar_today, color: Colors.grey),
-                SizedBox(width: 8),
-                Text(
-                  'Date Created: June 22, 2024',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
-
-            // Attachments Section
-            Text(
-              'Attachments',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Row(
-              children: [
-                Icon(Icons.picture_as_pdf, color: Colors.red),
-                SizedBox(width: 8),
-                Text('Project_Documentation.pdf', style: TextStyle(fontSize: 16)),
-                Spacer(),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    // Add PDF attachment functionality here
-                  },
-                ),
-              ],
-            ),
+            
             SizedBox(height: 16),
 
             // Custom Section Button
@@ -197,15 +230,28 @@ class _ProjectDetailsState extends State<ProjectDetails> {
     );
   }
 
-  // Helper widget for displaying team member avatars (without names)
-Widget teamMemberAvatar(String imagePath) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-    child: CircleAvatar(
-      radius: 24,
-      backgroundImage: AssetImage(imagePath),
-    ),
-  );
-}
+  // Helper widget to build titles with icons
+  Widget _buildTitleWithIcon(String title, IconData icon) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.grey),
+        SizedBox(width: 8),
+        Text(
+          title,
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
 
+  // Helper widget for displaying team member avatars (without names)
+  Widget teamMemberAvatar(String imagePath) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0), // Reduced horizontal padding
+      child: CircleAvatar(
+        radius: 20, // Radius for team member avatars
+        backgroundImage: AssetImage(imagePath),
+      ),
+    );
+  }
 }
