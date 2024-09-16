@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 
-class ProjectDetails extends StatelessWidget {
+class ProjectDetails extends StatefulWidget {
   final String projectName;
 
   ProjectDetails({required this.projectName});
 
   @override
+  _ProjectDetailsState createState() => _ProjectDetailsState();
+}
+
+class _ProjectDetailsState extends State<ProjectDetails> {
+  bool showFullText = false;
+
+  @override
   Widget build(BuildContext context) {
+    String description =
+        'This project is a Gaming Platform Web & Mobile App designed to provide a comprehensive gaming experience across devices. The app includes features for multiplayer gaming, real-time updates, and an immersive user experience.';
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(projectName),
+        title: Text(widget.projectName),
         backgroundColor: Colors.deepPurple[400],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -54,14 +64,33 @@ class ProjectDetails extends StatelessWidget {
 
             // Project Description
             Text(
-              'Project Description',
+              'Description',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
+            
+            // Partial description with "See more details" button
             Text(
-              'This project is a Gaming Platform Web & Mobile App designed to provide a comprehensive gaming experience across devices. The app includes features for multiplayer gaming, real-time updates, and an immersive user experience.',
+              showFullText
+                  ? description
+                  : description.substring(0, 100) + '...',
               style: TextStyle(fontSize: 16),
             ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  showFullText = !showFullText;
+                });
+              },
+              child: Text(
+                showFullText ? 'See less details' : 'See more details',
+                style: TextStyle(
+                  color: Colors.deepPurple[400],
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            
             SizedBox(height: 16),
 
             // Team Section
@@ -72,7 +101,6 @@ class ProjectDetails extends StatelessWidget {
             SizedBox(height: 8),
             Row(
               children: [
-                // Profile Pictures of Team Members
                 teamMemberAvatar('assets/images/person1.png', 'John Doe'),
                 teamMemberAvatar('assets/images/person2.png', 'Jane Smith'),
                 teamMemberAvatar('assets/images/person3.png', 'Mike Johnson'),
@@ -96,7 +124,7 @@ class ProjectDetails extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Sarah Lee', style: TextStyle(fontSize: 16)),
+                    Text('Jeanine Uwase', style: TextStyle(fontSize: 16)),
                     Text('Lead Developer', style: TextStyle(color: Colors.grey)),
                   ],
                 ),
