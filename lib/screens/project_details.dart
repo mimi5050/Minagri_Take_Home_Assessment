@@ -100,12 +100,13 @@ class _ProjectDetailsState extends State<ProjectDetails> {
             ),
             SizedBox(height: 8),
             Row(
-              children: [
-                teamMemberAvatar('assets/images/person1.png', 'John Doe'),
-                teamMemberAvatar('assets/images/person2.png', 'Jane Smith'),
-                teamMemberAvatar('assets/images/person3.png', 'Mike Johnson'),
-              ],
-            ),
+          children: [
+            teamMemberAvatar('assets/images/person1.png'),
+            teamMemberAvatar('assets/images/person2.png'),
+            teamMemberAvatar('assets/images/person3.png'),
+          ],
+        ),
+
             SizedBox(height: 16),
 
             // Leader Section
@@ -196,17 +197,15 @@ class _ProjectDetailsState extends State<ProjectDetails> {
     );
   }
 
-  // Helper widget for displaying team member avatars
-  Widget teamMemberAvatar(String imagePath, String name) {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 24,
-          backgroundImage: AssetImage(imagePath),
-        ),
-        SizedBox(height: 4),
-        Text(name, style: TextStyle(fontSize: 12)),
-      ],
-    );
-  }
+  // Helper widget for displaying team member avatars (without names)
+Widget teamMemberAvatar(String imagePath) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+    child: CircleAvatar(
+      radius: 24,
+      backgroundImage: AssetImage(imagePath),
+    ),
+  );
+}
+
 }
