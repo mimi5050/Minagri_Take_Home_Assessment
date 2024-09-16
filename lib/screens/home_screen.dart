@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'project_details.dart'; // Ensure the path is correct based on your project structure
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -214,33 +216,33 @@ Widget build(BuildContext context) {
             color: Colors.deepPurple[400], // Same background color as the AppBar
             child: Column(
               children: [
-                // Search Section
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple[400], // Background matching the AppBar
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white, // Keep the search field white
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search, color: Colors.deepPurple[400]),
-                            hintText: 'nft website de',
-                            hintStyle: TextStyle(color: Colors.deepPurple[400]),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+             Padding(
+  padding: EdgeInsets.all(16.0),
+  child: Container(
+    width: 550, // Set a specific width for the search area
+    height: 50, // Set a specific height for the search area
+    decoration: BoxDecoration(
+      color: Colors.deepPurple[400], // Match the AppBar color
+      borderRadius: BorderRadius.circular(6), // Reduced border radius
+      border: Border.all(color: Colors.white, width: 1), // Reduced border width
+    ),
+    child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.0), // Adjust horizontal padding
+      child: TextField(
+        decoration: InputDecoration(
+          prefixIcon: Icon(Icons.search, color: Colors.white), // Search icon color
+          hintText: 'Search...', // Hint text
+          hintStyle: TextStyle(color: Colors.white), // Hint text color
+          border: InputBorder.none, // Remove the default border
+        ),
+      ),
+    ),
+  ),
+),
+
+
+
+
               ],
             ),
           ),
@@ -275,7 +277,7 @@ Widget build(BuildContext context) {
           
           // Recent Projects Cards Section
           SizedBox(
-            height: 312,  // Set a specific height for ListView
+            height: 330,  // Set a specific height for ListView
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -363,8 +365,6 @@ Widget build(BuildContext context) {
   );
 }
 
-
-// Updated Project Card Widget with Reduced Space Between Profile Pictures
 Widget projectCard(String imagePath, String projectName, String date, int progress, int comments) {
   return Container(
     width: 300,
@@ -434,7 +434,19 @@ Widget projectCard(String imagePath, String projectName, String date, int progre
         ),
         Padding(
           padding: EdgeInsets.all(8),
-          child: Image.asset(imagePath, fit: BoxFit.cover, height: 150),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProjectDetails(
+                    projectName: projectName, // Pass project name to the details page
+                  ),
+                ),
+              );
+            },
+            child: Image.asset(imagePath, fit: BoxFit.cover, height: 150),
+          ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
@@ -515,5 +527,6 @@ Widget projectCard(String imagePath, String projectName, String date, int progre
     ),
   );
 }
+
 
 }
