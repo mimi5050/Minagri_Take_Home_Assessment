@@ -11,6 +11,12 @@ class ProjectDetails extends StatefulWidget {
 
 class _ProjectDetailsState extends State<ProjectDetails> {
   bool showFullText = false;
+  final List<String> tasks = ['Task 1', 'Task 2', 'Task 3'];
+  final Map<String, bool> taskVoting = {
+    'Task 1': false,
+    'Task 2': false,
+    'Task 3': false,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +25,29 @@ class _ProjectDetailsState extends State<ProjectDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.projectName),
-        backgroundColor: Colors.deepPurple[400],
+        title: Text(widget.projectName, style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context); // Go back to the Home Page
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Colors.black),
             onPressed: () {
               Navigator.pop(context); // Navigate back to the home
             },
           ),
           IconButton(
-            icon: Icon(Icons.share),
+            icon: Icon(Icons.share, color: Colors.black),
             onPressed: () {
               // Share functionality can be added here
             },
           ),
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: Icon(Icons.more_vert, color: Colors.black),
             onPressed: () {
               // More options can be added here
             },
@@ -197,7 +203,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.deepPurple[400], // Background color
-                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4), // Adjusted padding
+                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6), // Adjusted padding
                             textStyle: TextStyle(fontSize: 12), // Reduced font size
                           ),
                           child: Text(
@@ -215,14 +221,85 @@ class _ProjectDetailsState extends State<ProjectDetails> {
             SizedBox(height: 16),
 
             // Custom Section Button
-            ElevatedButton(
-              onPressed: () {
-                // Custom section logic
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple[400],
+            SizedBox(
+              width: double.infinity, // Make the button full width
+              child: ElevatedButton(
+                onPressed: () {
+                  // Custom section logic
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple[400], // Background color
+                  padding: EdgeInsets.symmetric(vertical: 12), // Adjusted padding
+                ),
+                child: Text(
+                  'Add Custom Section',
+                  style: TextStyle(color: Colors.white), // Text color
+                ),
               ),
-              child: Text('Add Custom Section'),
+            ),
+
+            SizedBox(height: 16),
+
+            // Sub Task Section
+            Text(
+              'Sub Task (3)',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+
+            // List of Sub Tasks with Voting Icons
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: tasks.map((task) {
+                return Container(
+                  margin: EdgeInsets.only(bottom: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: taskVoting[task] == true ? Colors.green[50] : Colors.white,
+                    border: Border.all(
+                      color: taskVoting[task] == true ? Colors.green : Colors.grey,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(task),
+                      IconButton(
+                        icon: Icon(
+                          taskVoting[task] == true ? Icons.check_circle : Icons.check_circle_outline,
+                          color: taskVoting[task] == true ? Colors.green : Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            taskVoting.update(task, (voted) => !voted);
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+
+            SizedBox(height: 16),
+
+            // Add New Sub Task Button
+            SizedBox(
+              width: double.infinity, // Make the button full width
+              child: ElevatedButton(
+                onPressed: () {
+                  // Add new sub task logic
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple[400], // Background color
+                  padding: EdgeInsets.symmetric(vertical: 12), // Adjusted padding
+                ),
+                child: Text(
+                  '+ Add New Sub Task',
+                  style: TextStyle(color: Colors.white), // Text color
+                ),
+              ),
             ),
           ],
         ),
@@ -230,7 +307,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
     );
   }
 
-  // Helper widget to build titles with icons
+  // Helper widget for displaying title with icon
   Widget _buildTitleWithIcon(String title, IconData icon) {
     return Row(
       children: [
