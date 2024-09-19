@@ -202,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/images/profile_picture.png',
+                    'assets/images/applog.png',
                     height: 40,
                     width: 40,
                   ),
@@ -468,107 +468,122 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-  child: Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-    elevation: 4,
-    child: ListTile(
-      leading: Icon(
-        Icons.business_center,
-        color: Colors.deepPurple[400],
-        size: 40, // Reduced icon size
-      ),
-      title: const Text(
-        'Fintech Project',
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // Reduced font size
-      ),
-      subtitle: Row(
-        children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage('assests/profile1.png'), // Replace with actual URLs
-            radius: 15,
-          ),
-          const SizedBox(width: 4), // Space between avatars
-          CircleAvatar(
-            backgroundImage: NetworkImage('assets/images/profile2.png'), // Replace with actual URLs
-            radius: 15,
-          ),
-          const SizedBox(width: 4), // Space between avatars
-          CircleAvatar(
-            backgroundImage: NetworkImage('assets/images/profile3.png'), // Replace with actual URLs
-            radius: 15,
-          ),
-          const SizedBox(width: 4), // Space between avatars
-          const Text('+', style: TextStyle(fontSize: 16)), // "+" after the profile pictures
-        ],
-      ),
-      trailing: SizedBox(
-        width: 100, // Larger width for the circle
-        height: 100, // Larger height for the circle
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // Scale the circular progress indicator
-            Transform.scale(
-              scale: 1.5, // Adjust the scale to make the circle larger
-              child: CircularProgressIndicator(
-                value: 0.85, // Progress value (85%)
-                backgroundColor: Colors.grey[300],
-                color: Colors.blue,
-                strokeWidth: 4, // You can adjust the stroke width as needed
+        Container(
+          margin: const EdgeInsets.only(bottom: 80.0), // Adds bottom margin
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 4,
+              child: ListTile(
+                leading: Icon(
+                  Icons.business_center,
+                  color: Colors.deepPurple[400],
+                  size: 40, // Reduced icon size
+                ),
+                title: const Text(
+                  'Fintech Project',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // Reduced font size
+                ),
+                subtitle: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/person4.png'), // Using local assets
+                      radius: 15,
+                    ),
+                    const SizedBox(width: 4), // Space between avatars
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/person2.png'), // Using local assets
+                      radius: 15,
+                    ),
+                    const SizedBox(width: 4), // Space between avatars
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/person3.png'), // Using local assets
+                      radius: 15,
+                    ),
+                    const SizedBox(width: 4), // Space between avatars
+                    const Text('+', style: TextStyle(fontSize: 16)), // "+" after the profile pictures
+                  ],
+                ),
+                trailing: SizedBox(
+                  width: 100, // Larger width for the circle
+                  height: 100, // Larger height for the circle
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // Scale the circular progress indicator
+                      Transform.scale(
+                        scale: 1.5, // Adjust the scale to make the circle larger
+                        child: CircularProgressIndicator(
+                          value: 0.85, // Progress value (85%)
+                          backgroundColor: Colors.grey[300],
+                          color: Colors.blue,
+                          strokeWidth: 4, // You can adjust the stroke width as needed
+                        ),
+                      ),
+                      // Percentage text inside the circle
+                      const Text(
+                        '85%',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20, // Adjusted font size for visibility
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-            // Percentage text inside the circle
-            const Text(
-              '85%',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 20, // Adjusted font size for visibility
-              ),
-            ),
-          ],
+          ),
+        ),
+
+      ],
         ),
       ),
-    ),
-  ),
-),
 
-
-
-
-
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openCreateProjectDialog,
         backgroundColor: const Color.fromARGB(255, 165, 135, 170),
         child: const Icon(Icons.add, color: Colors.black),
       ),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task),
-            label: 'Tasks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.purple[400],
-        onTap: _onItemTapped,
+      
+    bottomNavigationBar: BottomNavigationBar(
+  items: <BottomNavigationBarItem>[
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.home),
+      label: 'Home',
+    ),
+    BottomNavigationBarItem(
+      icon: Padding(
+        padding: EdgeInsets.only(right: 30.0), // Add right padding to create space
+        child: Icon(Icons.task),
       ),
+      label: 'Tasks',
+    ),
+    BottomNavigationBarItem(
+      icon: Padding(
+        padding: EdgeInsets.only(left: 25.0), // Add left padding to create space
+        child: Icon(Icons.message),
+      ),
+      label: 'Messages',
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.person),
+      label: 'Profile',
+    ),
+  ],
+  currentIndex: _selectedIndex,
+  selectedItemColor: Colors.purple[400], // Color when selected
+  unselectedItemColor: Colors.black, // Color when not selected
+  onTap: _onItemTapped,
+),
+
+      
     );
   }
 
