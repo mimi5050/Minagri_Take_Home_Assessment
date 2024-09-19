@@ -11,11 +11,11 @@ class ProjectDetails extends StatefulWidget {
 
 class _ProjectDetailsState extends State<ProjectDetails> {
   bool showFullText = false;
-  final List<String> tasks = ['Task 1', 'Task 2', 'Task 3'];
+  final List<String> tasks = ['Define a Problem With a Client', 'Create Wirefame and Userflow', 'Project Setup & Brief'];
   final Map<String, bool> taskVoting = {
-    'Task 1': false,
-    'Task 2': false,
-    'Task 3': false,
+    'Define a Problem With a Client': false,
+    'Create Wirefame and Userflow': false,
+    'Project Setup & Brief': false,
   };
 
   @override
@@ -25,29 +25,29 @@ class _ProjectDetailsState extends State<ProjectDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.projectName, style: TextStyle(color: Colors.black)),
+        title: Text(widget.projectName, style: const TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context); // Go back to the Home Page
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.home, color: Colors.black),
+            icon: const Icon(Icons.home, color: Colors.black),
             onPressed: () {
               Navigator.pop(context); // Navigate back to the home
             },
           ),
           IconButton(
-            icon: Icon(Icons.share, color: Colors.black),
+            icon: const Icon(Icons.share, color: Colors.black),
             onPressed: () {
               // Share functionality can be added here
             },
           ),
           IconButton(
-            icon: Icon(Icons.more_vert, color: Colors.black),
+            icon: const Icon(Icons.more_vert, color: Colors.black),
             onPressed: () {
               // More options can be added here
             },
@@ -55,7 +55,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -66,21 +66,21 @@ class _ProjectDetailsState extends State<ProjectDetails> {
               width: double.infinity,
               height: 200,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Project Description
-            Text(
+            const Text(
               'Description',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             
             // Partial description with "See more details" button
             Text(
               showFullText
                   ? description
-                  : description.substring(0, 100) + '...',
-              style: TextStyle(fontSize: 16),
+                  : '${description.substring(0, 100)}...',
+              style: const TextStyle(fontSize: 16),
             ),
             TextButton(
               onPressed: () {
@@ -90,18 +90,18 @@ class _ProjectDetailsState extends State<ProjectDetails> {
               },
               child: Text(
                 showFullText ? 'See less details' : 'See more details',
-                style: TextStyle(
-                  color: Colors.deepPurple[400],
+                style: const TextStyle(
+                  color:  Color(0xFF7980FF),
                   fontSize: 16,
                 ),
               ),
             ),
             
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Organized Content (Team, Team Leader, Status, Due Date, Attachments)
             Table(
-              columnWidths: {
+              columnWidths: const {
                 0: FlexColumnWidth(), // Expands the first column flexibly
                 1: FlexColumnWidth(), // Expands the second column flexibly
               },
@@ -113,15 +113,15 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                     Row(
                       children: [
                         teamMemberAvatar('assets/images/person1.png'),
-                        SizedBox(width: 8), // Spacing between avatars
+                        const SizedBox(width: 8), // Spacing between avatars
                         teamMemberAvatar('assets/images/person2.png'),
-                        SizedBox(width: 8), // Spacing between avatars
+                        const SizedBox(width: 8), // Spacing between avatars
                         teamMemberAvatar('assets/images/person3.png'),
                       ],
                     ),
                   ],
                 ),
-                TableRow(
+                const TableRow(
                   children: [SizedBox(height: 16), SizedBox(height: 16)],
                 ),
                 
@@ -129,7 +129,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                 TableRow(
                   children: [
                     _buildTitleWithIcon('Team Leader', Icons.person),
-                    Row(
+                    const Row(
                       children: [
                         CircleAvatar(
                           radius: 20,
@@ -147,7 +147,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                     ),
                   ],
                 ),
-                TableRow(
+                const TableRow(
                   children: [SizedBox(height: 16), SizedBox(height: 16)],
                 ),
                 
@@ -156,14 +156,14 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                   children: [
                     _buildTitleWithIcon('Status', Icons.assignment_turned_in),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Color(0xFFE91E63),
-                        borderRadius: BorderRadius.circular(4),
+                        color: const Color(0xFFE91E63),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: 120), // Reduced width
-                        child: Text(
+                        constraints: const BoxConstraints(maxWidth: 80), // Reduced width
+                        child: const Text(
                           'To Do',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           overflow: TextOverflow.ellipsis,
@@ -172,7 +172,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                     ),
                   ],
                 ),
-                TableRow(
+                const TableRow(
                   children: [SizedBox(height: 16), SizedBox(height: 16)],
                 ),
                 
@@ -180,10 +180,10 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                 TableRow(
                   children: [
                     _buildTitleWithIcon('Due Date', Icons.date_range),
-                    Text('September 30, 2024', style: TextStyle(fontSize: 14)),
+                    const Text('September 30, 2024', style: TextStyle(fontSize: 14)),
                   ],
                 ),
-                TableRow(
+                const TableRow(
                   children: [SizedBox(height: 16), SizedBox(height: 16)],
                 ),
                 
@@ -193,20 +193,20 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                     _buildTitleWithIcon('Attachments', Icons.attach_file),
                     Row(
                       children: [
-                        Icon(Icons.picture_as_pdf, color: Colors.red),
-                        SizedBox(width: 8),
-                        Text('Reference.pdf', style: TextStyle(fontSize: 12)),
-                        Spacer(),
+                        const Icon(Icons.picture_as_pdf, color: Colors.red),
+                        const SizedBox(width: 8),
+                        const Text('Reference.pdf', style: TextStyle(fontSize: 12)),
+                        const Spacer(),
                         ElevatedButton(
                           onPressed: () {
                             // Add PDF attachment functionality
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepPurple[400], // Background color
-                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6), // Adjusted padding
-                            textStyle: TextStyle(fontSize: 12), // Reduced font size
+                            backgroundColor:  const Color(0xFF7980FF), // Background color
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6), // Adjusted padding
+                            textStyle: const TextStyle(fontSize: 12), // Reduced font size
                           ),
-                          child: Text(
+                          child: const Text(
                             '+ Add',
                             style: TextStyle(color: Colors.white), // Text color
                           ),
@@ -218,7 +218,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
               ],
             ),
             
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Custom Section Button
             SizedBox(
@@ -228,32 +228,32 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                   // Custom section logic
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple[400], // Background color
-                  padding: EdgeInsets.symmetric(vertical: 12), // Adjusted padding
+                  backgroundColor: const Color(0xFF7980FF), // Background color
+                  padding: const EdgeInsets.symmetric(vertical: 15), // Adjusted padding
                 ),
-                child: Text(
+                child: const Text(
                   'Add Custom Section',
                   style: TextStyle(color: Colors.white), // Text color
                 ),
               ),
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Sub Task Section
-            Text(
+            const Text(
               'Sub Task (3)',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             // List of Sub Tasks with Voting Icons
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: tasks.map((task) {
                 return Container(
-                  margin: EdgeInsets.only(bottom: 8),
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  margin: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
                     color: taskVoting[task] == true ? Colors.green[50] : Colors.white,
                     border: Border.all(
@@ -282,7 +282,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
               }).toList(),
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Add New Sub Task Button
             SizedBox(
@@ -292,10 +292,10 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                   // Add new sub task logic
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple[400], // Background color
-                  padding: EdgeInsets.symmetric(vertical: 12), // Adjusted padding
+                  backgroundColor:  const Color(0xFF7980FF), // Background color
+                  padding: const EdgeInsets.symmetric(vertical: 15), // Adjusted padding
                 ),
-                child: Text(
+                child: const Text(
                   '+ Add New Sub Task',
                   style: TextStyle(color: Colors.white), // Text color
                 ),
@@ -312,21 +312,21 @@ class _ProjectDetailsState extends State<ProjectDetails> {
     return Row(
       children: [
         Icon(icon, color: Colors.grey),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
         Text(
           title,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         ),
       ],
     );
   }
 
-  // Helper widget for displaying team member avatars (without names)
+  // Helper widget for displaying team member avatars 
   Widget teamMemberAvatar(String imagePath) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0), // Reduced horizontal padding
+      padding: const EdgeInsets.symmetric(horizontal: 4.0), 
       child: CircleAvatar(
-        radius: 20, // Radius for team member avatars
+        radius: 15, // Radius for team member avatars
         backgroundImage: AssetImage(imagePath),
       ),
     );

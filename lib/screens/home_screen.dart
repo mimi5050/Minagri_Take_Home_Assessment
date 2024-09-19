@@ -43,19 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.purple),
+                      side: const BorderSide(color: Color(0xFF7980FF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    icon: const Icon(Icons.list, color: Colors.purple),
+                    icon: const Icon(Icons.list, color: Color(0xFF7980FF)),
                     label: const Text("List",
-                        style: TextStyle(color: Colors.purple)),
+                        style: TextStyle(color:  Color(0xFF7980FF))),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor:  const Color(0xFF7980FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -72,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   labelText: "Visibility",
                   border: OutlineInputBorder(),
                 ),
-                items: [
-                  const DropdownMenuItem(
+                items: const [
+                  DropdownMenuItem(
                     value: "public",
                     child: Row(
                       children: [
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  const DropdownMenuItem(
+                  DropdownMenuItem(
                     value: "private",
                     child: Row(
                       children: [
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple,
+                  backgroundColor:  const Color(0xFF7980FF),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
      appBar: AppBar(
   toolbarHeight: 60,
-  backgroundColor: Colors.deepPurple[400],
+  backgroundColor:  const Color(0xFF7980FF),
   iconTheme: const IconThemeData(color: Colors.white), // Set icon color to white
   title: Padding(
     padding: const EdgeInsets.only(top: 18.0),
@@ -197,7 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             // Drawer Header with Profile section
             Container(
-              color: Colors.deepPurple[400], // Same color as AppBar
+              color:  const Color(0xFF7980FF), // Same color as AppBar
               padding: const EdgeInsets.only(top: 18, bottom: 18, left: 20),
               child: Row(
                 children: [
@@ -214,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(
                         fontSize: 18,
                         color:
-                            Colors.white), // Kept the text white for visibility
+                            Colors.white), 
                   ),
                 ],
               ),
@@ -227,10 +227,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   CircleAvatar(
                     radius: 25,
                     backgroundImage: AssetImage(
-                        'assets/images/profile_picture.png'), // Your profile picture asset
+                        'assets/images/profile_picture.png'), 
                   ),
                   SizedBox(
-                      width: 10), // Space between the profile picture and text
+                      width: 10), 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment
                         .start, // Aligns text to the start of the column
@@ -358,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               width: double.infinity,
               color:
-                  Colors.deepPurple[400], // Same background color as the AppBar
+                   const Color(0xFF7980FF), // Same background color as the AppBar
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
@@ -366,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       .8, // Set a specific width for the search area
                   height: 50, // Set a specific height for the search area
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple[400], // Match the AppBar color
+                    color:  const Color(0xFF7980FF), // Match the AppBar color
                     borderRadius:
                         BorderRadius.circular(6), // Reduced border radius
                     border: Border.all(
@@ -407,10 +407,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       // View all projects action
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
+                    style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: const Text(
@@ -424,7 +423,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             // Recent Projects Cards Section
             SizedBox(
-              height: 330, // Set a specific height for ListView
+              height: 330, 
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -455,9 +454,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       // View all tasks action
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: const Text(
@@ -478,49 +476,92 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               elevation: 4,
               child: ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.business_center,
-                  color: Colors.deepPurple[400],
+                  color:  Color(0xFF7980FF),
                   size: 40, // Reduced icon size
                 ),
                 title: const Text(
                   'Fintech Project',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // Reduced font size
                 ),
+                
                 subtitle: Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundImage: AssetImage('assets/images/person4.png'), // Using local assets
-                      radius: 15,
+                      radius: 12,
                     ),
                     const SizedBox(width: 4), // Space between avatars
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundImage: AssetImage('assets/images/person2.png'), // Using local assets
-                      radius: 15,
+                      radius: 12,
                     ),
-                    const SizedBox(width: 4), // Space between avatars
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/person3.png'), // Using local assets
-                      radius: 15,
+                    const SizedBox(width: 4), 
+                    const CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/person3.png'), 
+                      radius: 12,
                     ),
-                    const SizedBox(width: 4), // Space between avatars
-                    const Text('+', style: TextStyle(fontSize: 16)), // "+" after the profile pictures
+                    const SizedBox(width: 4), 
+                    Container(
+                        color: Color(0xFFEF946D), 
+                        padding: EdgeInsets.all(4), 
+                        child: Center(
+                          child: Text(
+                            '+', // Replace with your text
+                            style: TextStyle(
+                              fontSize: 8,        // Font size 8px
+                              color: Colors.white, // Text color #fff
+                            ),
+                          ),
+                        ),
+                      ),
+                     const SizedBox(width: 8), // Space between text and chart icon
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        const Icon(Icons.chat_bubble, size: 24), // Chart icon
+                        Positioned(
+                          right: -6, // Adjust as needed
+                          top: -6, // Adjust as needed
+                          child: Container(
+                            padding: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            constraints: const BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: const Text(
+                              '4', 
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10, 
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 trailing: SizedBox(
-                  width: 100, // Larger width for the circle
-                  height: 100, // Larger height for the circle
+                  width: 100, 
+                  height: 120, 
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       // Scale the circular progress indicator
                       Transform.scale(
-                        scale: 1.5, // Adjust the scale to make the circle larger
+                        scale: 1.5, 
                         child: CircularProgressIndicator(
                           value: 0.85, // Progress value (85%)
                           backgroundColor: Colors.grey[300],
                           color: Colors.blue,
-                          strokeWidth: 4, // You can adjust the stroke width as needed
+                          strokeWidth: 4, 
                         ),
                       ),
                       // Percentage text inside the circle
@@ -529,7 +570,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20, // Adjusted font size for visibility
+                          fontSize: 18, 
                         ),
                       ),
                     ],
@@ -539,221 +580,223 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-
       ],
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: _openCreateProjectDialog,
-        backgroundColor: const Color.fromARGB(255, 165, 135, 170),
-        child: const Icon(Icons.add, color: Colors.black),
-      ),
+              floatingActionButton: Padding(
+                padding: const EdgeInsets.only(bottom: 20.0, left:25.0), 
+                child: FloatingActionButton(
+                  onPressed: _openCreateProjectDialog,
+                  backgroundColor:  const Color(0xFF7980FF),
+                  child: const Icon(Icons.add, color: Colors.black),
+                ),
+              ),
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      
-    bottomNavigationBar: BottomNavigationBar(
-  items: <BottomNavigationBarItem>[
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: 'Home',
-    ),
-    BottomNavigationBarItem(
-      icon: Padding(
-        padding: EdgeInsets.only(right: 30.0), // Add right padding to create space
-        child: Icon(Icons.task),
-      ),
-      label: 'Tasks',
-    ),
-    BottomNavigationBarItem(
-      icon: Padding(
-        padding: EdgeInsets.only(left: 25.0), // Add left padding to create space
-        child: Icon(Icons.message),
-      ),
-      label: 'Messages',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      label: 'Profile',
-    ),
-  ],
-  currentIndex: _selectedIndex,
-  selectedItemColor: Colors.purple[400], // Color when selected
-  unselectedItemColor: Colors.black, // Color when not selected
-  onTap: _onItemTapped,
-),
+              
+            bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.only(right: 30.0), 
+                child: Icon(Icons.task_alt),
+              ),
+              label: 'Tasks',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.only(left: 25.0), 
+                child: Icon(Icons.chat_bubble),
+              ),
+              label: 'Messages',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor:  const Color(0xFF7980FF), // Color when selected
+          unselectedItemColor: Colors.black, // Color when not selected
+          onTap: _onItemTapped,
+        ),
 
-      
-    );
-  }
+              
+            );
+          }
 
-  Widget projectCard(String imagePath, String projectName, String date,
-      int progress, int comments) {
-    return Container(
-      width: 300,
-      margin: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [const BoxShadow(blurRadius: 10, color: Colors.black12)],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Project Icon with Background
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: const BoxDecoration(
-                    color: Colors.lightGreen,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(Icons.work, color: Colors.black),
-                ),
-                // Project name bold
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      projectName,
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                const Icon(Icons.more_vert),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(Icons.calendar_today, size: 14),
-                    const SizedBox(width: 4),
-                    Text(date),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(Icons.comment, size: 14),
-                    const SizedBox(width: 4),
-                    Text('$comments'),
-                    const SizedBox(width: 16),
-                    const Icon(Icons.share, size: 14),
-                    const SizedBox(width: 4),
-                    const Text('Share'),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProjectDetails(
-                      projectName:
-                          projectName, // Pass project name to the details page
-                    ),
-                  ),
-                );
-              },
-              child: Image.asset(imagePath, fit: BoxFit.cover, height: 150),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Profile pictures and progress label + bar in a row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Profile pictures with reduced spacing
-                    const Row(
+          Widget projectCard(String imagePath, String projectName, String date,
+              int progress, int comments) {
+            return Container(
+              width: 300,
+              margin: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [BoxShadow(blurRadius: 10, color: Colors.black12)],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/person1.png'),
-                          radius: 12,
+                        // Project Icon with Background
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: const BoxDecoration(
+                            color: Colors.lightGreen,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.work, color: Colors.black),
                         ),
-                        SizedBox(width: 0), // Reduced spacing by 20px
-                        CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/person2.png'),
-                          radius: 12,
+                        // Project name bold
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Text(
+                              projectName,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
                         ),
-                        SizedBox(width: 0),
-                        CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/person3.png'),
-                          radius: 12,
+                        const Icon(Icons.more_horiz),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.calendar_today, size: 14),
+                            const SizedBox(width: 4),
+                            Text(date),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.chat_bubble, size: 14),
+                            const SizedBox(width: 4),
+                            Text('$comments'),
+                            const SizedBox(width: 16),
+                            const Icon(Icons.share, size: 14),
+                            const SizedBox(width: 4),
+                            const Text('Share'),
+                          ],
                         ),
                       ],
                     ),
-                    // Progress label and bar
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Progress label
-                            const Text(
-                              'Progress',
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProjectDetails(
+                              projectName:
+                                  projectName, 
                             ),
-                            const SizedBox(height: 4),
-                            // Progress bar
-                            Stack(
+                          ),
+                        );
+                      },
+                      child: Image.asset(imagePath, fit: BoxFit.cover, height: 150),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Profile pictures and progress label + bar in a row
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // Profile pictures with reduced spacing
+                            const Row(
                               children: [
-                                Container(
-                                  height: 8, // Thickness of the progress bar
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue[100],
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('assets/images/person1.png'),
+                                  radius: 12,
                                 ),
-                                Container(
-                                  height: 6, // Thickness of the progress bar
-                                  width: progress * 2.5,
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue,
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
+                                SizedBox(width: 0), // Reduced spacing by 20px
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('assets/images/person2.png'),
+                                  radius: 12,
+                                ),
+                                SizedBox(width: 0),
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('assets/images/person3.png'),
+                                  radius: 12,
                                 ),
                               ],
                             ),
+                            // Progress label and bar
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Progress label
+                                    const Text(
+                                      'Progress',
+                                      style: TextStyle(
+                                          fontSize: 14, fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    // Progress bar
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          height: 8, // Thickness of the progress bar
+                                          decoration: BoxDecoration(
+                                            color: Colors.blue[100],
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 6, // Thickness of the progress bar
+                                          width: progress * 2.5,
+                                          decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            // Progress percentage
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text('$progress%'),
+                            ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
-                    // Progress percentage
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text('$progress%'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+                  ),
+                ],
+              ),
+            );
+          }
 }
