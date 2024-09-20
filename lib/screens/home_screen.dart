@@ -420,7 +420,7 @@ void _onItemTapped(int index) {
                   ),
                   TextButton(
                     onPressed: () {
-                      // View all projects action
+                      
                     },
                     style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(

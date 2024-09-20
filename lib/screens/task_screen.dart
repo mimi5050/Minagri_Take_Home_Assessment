@@ -26,14 +26,14 @@ class _TaskScreenState extends State<TaskScreen> {
 
   // Add a new task (stub function)
   void _addTask() {
-    
+    // Add task functionality can be implemented here
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tasks'),
+        title: const Text('Tasks', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         backgroundColor: const Color(0xFF7980FF),
         actions: [
           IconButton(
@@ -42,7 +42,10 @@ class _TaskScreenState extends State<TaskScreen> {
           ),
         ],
       ),
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          color: const Color(0xFFF5F5F5),
+        ),
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
           itemCount: tasks.length,
@@ -76,44 +79,55 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ListTile(
-        leading: Checkbox(
-          value: task.isCompleted,
-          onChanged: (value) {
-            onTaskToggle();
-          },
-          activeColor: const Color(0xFF7980FF),
-        ),
-        title: Text(
-          task.title,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-          ),
-        ),
-        subtitle: Column(
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    task.title,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      decoration: task.isCompleted ? TextDecoration.lineThrough : null,
+                    ),
+                  ),
+                ),
+                Switch(
+                  value: task.isCompleted,
+                  onChanged: (value) {
+                    onTaskToggle();
+                  },
+                  activeColor: const Color(0xFF7980FF),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8.0),
             Text(
               task.dueDate,
               style: TextStyle(
                 color: task.isCompleted ? Colors.green : Colors.red,
               ),
             ),
-            SizedBox(height: 4.0),
+            const SizedBox(height: 10.0),
             Row(
               children: [
                 CircleAvatar(
                   backgroundImage: AssetImage(task.profileImage),
-                  radius: 16,
+                  radius: 20,
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 10),
                 Text(
                   task.assignedTo,
-                  style: TextStyle(fontWeight: FontWeight.w500),
+                  style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               ],
             ),
