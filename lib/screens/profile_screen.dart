@@ -32,14 +32,14 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 16),
             const Center(
               child: Text(
-                'Miriam Uwingabiye',
+                'Jennifer Lynner',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 8),
             const Center(
               child: Text(
-                'Software Developer',
+                'Mobile Developer',
                 style: TextStyle(fontSize: 18, color: Colors.grey),
               ),
             ),
@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Email: uwingabiye.m2000@gmail.com',
+              'Email:jenniferLynner2000@gmail.com',
               style: TextStyle(fontSize: 16),
             ),
             const Text(
@@ -73,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
                 
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF7980FF), // Button color
+                backgroundColor: const Color(0xFF7980FF), 
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
               ),

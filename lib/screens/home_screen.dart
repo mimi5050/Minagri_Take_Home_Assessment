@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'project_details.dart'; 
 import 'profile_screen.dart';
+import 'chat_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -124,13 +126,19 @@ void _onItemTapped(int index) {
     _selectedIndex = index;
   });
 
-  if (index == 1) { // 
+  if (index == 2) { // Navigate to ChatScreen when chat icon is tapped
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfileScreen()),
+      MaterialPageRoute(builder: (context) => const ChatScreen()),
+    );
+  } else if (index == 3) { // Navigate to ProfileScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProfileScreen()),
     );
   }
 }
+
 
   @override
   Widget build(BuildContext context) {
