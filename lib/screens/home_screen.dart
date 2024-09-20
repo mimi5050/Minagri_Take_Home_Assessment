@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'project_details.dart'; 
 import 'profile_screen.dart';
 import 'chat_screen.dart';
+import 'task_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -126,12 +127,17 @@ void _onItemTapped(int index) {
     _selectedIndex = index;
   });
 
-  if (index == 2) { // Navigate to ChatScreen when chat icon is tapped
+  if (index == 1) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const TaskScreen()),
+    );
+  } else if (index == 2) { 
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const ChatScreen()),
     );
-  } else if (index == 3) { // Navigate to ProfileScreen
+  } else if (index == 3) { 
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const ProfileScreen()),
@@ -410,9 +416,9 @@ void _onItemTapped(int index) {
                 children: [
                   const Text(
                     'Recent Projects',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () {
                       // View all projects action
                     },
@@ -426,6 +432,7 @@ void _onItemTapped(int index) {
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
+
                 ],
               ),
             ),
@@ -456,13 +463,13 @@ void _onItemTapped(int index) {
                 children: [
                   const Text(
                     'Today\'s Tasks',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  ElevatedButton(
+                   TextButton(
                     onPressed: () {
-                      
+                      // View all projects action
                     },
-                    style: ElevatedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),

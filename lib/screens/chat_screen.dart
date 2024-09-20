@@ -23,32 +23,60 @@ class ChatScreen extends StatelessWidget {
         child: ListView(
           children: const [
             ChatItem(
-              username: 'John Doe',
+              username: 'Jeanine Uwase',
               message: 'Hey, how are you?',
               time: '2m ago',
-              isUnread: true, // Unanswered message
+              isUnread: true,
               profileImage: 'assets/images/person1.png',
             ),
             ChatItem(
-              username: 'Alice Watson',
+              username: 'Alice Umutoni',
               message: 'The meeting is tomorrow at 3PM.',
               time: '5m ago',
-              isUnread: false, // Opened message
+              isUnread: false, 
               profileImage: 'assets/images/person2.png',
             ),
             ChatItem(
-              username: 'Michael Johnson',
+              username: 'Tuyizere JB',
               message: 'Can you share the report?',
               time: '10m ago',
-              isUnread: true, // Unanswered message
+              isUnread: true, 
               profileImage: 'assets/images/person3.png',
             ),
             ChatItem(
-              username: 'Emily Clark',
+              username: 'Aimee Ishimwe',
               message: 'Thanks for the help!',
               time: '1h ago',
-              isUnread: false, // Opened message
-              profileImage: 'assets/images/profile4.png',
+              isUnread: false, 
+              profileImage: 'assets/images/person4.png',
+            ),
+            ChatItem(
+              username: 'Sarah Kabera',
+              message: 'I’ve completed the task you assigned.',
+              time: '2h ago',
+              isUnread: true,
+              profileImage: 'assets/images/person5.png',
+            ),
+            ChatItem(
+              username: 'Rugarama Jacque',
+              message: 'Can we reschedule the meeting?',
+              time: '3h ago',
+              isUnread: true,
+              profileImage: 'assets/images/person2.png',
+            ),
+            ChatItem(
+              username: 'Ineza Rachel',
+              message: 'Looking forward to the event!',
+              time: '5h ago',
+              isUnread: false,
+              profileImage: 'assets/images/person1.png',
+            ),
+            ChatItem(
+              username: 'Mark Kabera',
+              message: 'I will call you later.',
+              time: 'Yesterday',
+              isUnread: false,
+              profileImage: 'assets/images/person3.png',
             ),
           ],
         ),
@@ -98,7 +126,7 @@ class ChatItem extends StatelessWidget {
         ],
       ),
       onTap: () {
-        // Navigate to the specific chat screen
+        
       },
     );
   }
