@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'project_details.dart'; // Ensure the path is correct based on your project structure
-
+import 'project_details.dart'; 
+import 'profile_screen.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -117,18 +117,20 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Screen Content'),
-    Text('Tasks Page'),
-    Text('Profile Page'),
-  ];
+ int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+  });
+
+  if (index == 1) { // 
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProfileScreen()),
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
      appBar: AppBar(
   toolbarHeight: 60,
   backgroundColor:  const Color(0xFF7980FF),
-  iconTheme: const IconThemeData(color: Colors.white), // Set icon color to white
+  iconTheme: const IconThemeData(color: Colors.white), 
   title: Padding(
     padding: const EdgeInsets.only(top: 18.0),
     child: Row(
@@ -197,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             // Drawer Header with Profile section
             Container(
-              color:  const Color(0xFF7980FF), // Same color as AppBar
+              color:  const Color(0xFF7980FF), 
               padding: const EdgeInsets.only(top: 18, bottom: 18, left: 20),
               child: Row(
                 children: [
@@ -233,13 +235,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 10), 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment
-                        .start, // Aligns text to the start of the column
+                        .start, 
                     children: [
                       Text(
                         'Good Morning',
                         style: TextStyle(
                             fontSize: 12,
-                            color: Colors.black), // Text color changed to black
+                            color: Colors.black), 
                       ),
                       Text(
                         'Jennifer Lyine',
@@ -247,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 14,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                        ), // Text color for greeting
+                        ), 
                       ),
                     ],
                   ),
@@ -255,11 +257,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const Divider(
-              color: Color.fromARGB(255, 180, 179, 179), //color of divider
-              height: 2, //height spacing of divider
-              thickness: 1, //thickness of divier line
-              indent: 12, //spacing at the start of divider
-              endIndent: 10, //spacing at the end of divider
+              color: Color.fromARGB(255, 180, 179, 179), 
+              height: 2, 
+              thickness: 1, 
+              indent: 12, 
+              endIndent: 10, 
             ),
             // MAIN MENU heading
             const Padding(
@@ -276,9 +278,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ExpansionTile(
               title: const Text('Home'),
-              leading: const Icon(Icons.home), //add icon
+              leading: const Icon(Icons.home), 
               childrenPadding:
-                  const EdgeInsets.only(left: 20), //children padding
+                  const EdgeInsets.only(left: 20), 
               children: [
                 ListTile(
                   title: const Text("Child Category 2"),
@@ -301,9 +303,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ExpansionTile(
               title: const Text('Pages'),
-              leading: const Icon(Icons.pages), //add icon
+              leading: const Icon(Icons.pages), 
               childrenPadding:
-                  const EdgeInsets.only(left: 20), //children padding
+                  const EdgeInsets.only(left: 20), 
               children: [
                 ListTile(
                   title: const Text("Child Category 2"),
@@ -314,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: const Text("Child Category 2"),
                   leading: const Icon(Icons.accessibility),
                   onTap: () {
-                    //action on press
+                    
                   },
                 ),
               ],
@@ -324,28 +326,28 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.widgets),
               title: const Text('Components'),
               onTap: () {
-                // Handle Components tap
+                
               },
             ),
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('Profile'),
               onTap: () {
-                // Handle Profile tap
+               
               },
             ),
             ListTile(
               leading: const Icon(Icons.chat),
               title: const Text('Chat'),
               onTap: () {
-                // Handle Chat tap
+                
               },
             ),
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               onTap: () {
-                // Handle Logout tap
+                
               },
             ),
           ],
@@ -358,34 +360,33 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               width: double.infinity,
               color:
-                   const Color(0xFF7980FF), // Same background color as the AppBar
+                   const Color(0xFF7980FF),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
-                  width: size.width *
-                      .8, // Set a specific width for the search area
-                  height: 50, // Set a specific height for the search area
+                  width: size.width *.8, 
+                  height: 50, 
                   decoration: BoxDecoration(
-                    color:  const Color(0xFF7980FF), // Match the AppBar color
+                    color:  const Color(0xFF7980FF), 
                     borderRadius:
-                        BorderRadius.circular(6), // Reduced border radius
+                        BorderRadius.circular(6), 
                     border: Border.all(
                         color: Colors.white,
-                        width: 0.5), // Reduced border width
+                        width: 0.5), 
                   ),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: 8.0), // Adjust horizontal padding
+                        horizontal: 8.0), 
                     child: TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.search,
                           color: Colors.white,
-                        ), // Search icon color
-                        hintText: 'Search...', // Hint text
+                        ), 
+                        hintText: 'Search...',
                         hintStyle:
-                            TextStyle(color: Colors.white), // Hint text color
-                        border: InputBorder.none, // Remove the default border
+                            TextStyle(color: Colors.white), 
+                        border: InputBorder.none, 
                       ),
                     ),
                   ),
@@ -451,7 +452,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // View all tasks action
+                      
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -467,7 +468,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
         Container(
-          margin: const EdgeInsets.only(bottom: 80.0), // Adds bottom margin
+          margin: const EdgeInsets.only(bottom: 80.0), 
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Card(
@@ -483,44 +484,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 title: const Text(
                   'Fintech Project',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // Reduced font size
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 
                 subtitle: Row(
                   children: [
                     const CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/person4.png'), // Using local assets
+                      backgroundImage: AssetImage('assets/images/person4.png'), 
                       radius: 12,
                     ),
-                    const SizedBox(width: 4), // Space between avatars
+                    const SizedBox(width: 0), 
                     const CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/person2.png'), // Using local assets
+                      backgroundImage: AssetImage('assets/images/person2.png'), 
                       radius: 12,
                     ),
-                    const SizedBox(width: 4), 
+                    const SizedBox(width: 0), 
                     const CircleAvatar(
                       backgroundImage: AssetImage('assets/images/person3.png'), 
                       radius: 12,
                     ),
-                    const SizedBox(width: 4), 
+                    const SizedBox(width: 0), 
                     Container(
-                        color: Color(0xFFEF946D), 
-                        padding: EdgeInsets.all(4), 
-                        child: Center(
+                        color: const Color(0xFFEF946D), 
+                        padding: const EdgeInsets.all(4), 
+                        child: const Center(
                           child: Text(
-                            '+', // Replace with your text
+                            '3+', 
                             style: TextStyle(
-                              fontSize: 8,        // Font size 8px
-                              color: Colors.white, // Text color #fff
+                              fontSize: 10,        
+                              color: Colors.white, 
                             ),
                           ),
                         ),
                       ),
-                     const SizedBox(width: 8), // Space between text and chart icon
+                     const SizedBox(width: 8), 
                     Stack(
                       clipBehavior: Clip.none,
                       children: [
-                        const Icon(Icons.chat_bubble, size: 24), // Chart icon
+                        const Icon(Icons.chat_bubble, size: 24), 
                         Positioned(
                           right: -6, // Adjust as needed
                           top: -6, // Adjust as needed
@@ -554,17 +555,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      // Scale the circular progress indicator
+                      
                       Transform.scale(
                         scale: 1.5, 
                         child: CircularProgressIndicator(
-                          value: 0.85, // Progress value (85%)
+                          value: 0.85, 
                           backgroundColor: Colors.grey[300],
                           color: Colors.blue,
                           strokeWidth: 4, 
                         ),
                       ),
-                      // Percentage text inside the circle
+            
                       const Text(
                         '85%',
                         style: TextStyle(
@@ -595,37 +596,37 @@ class _HomeScreenState extends State<HomeScreen> {
               floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
               
-            bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
+          bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(right: 30.0),
+              child: Icon(Icons.task_alt),
             ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.only(right: 30.0), 
-                child: Icon(Icons.task_alt),
-              ),
-              label: 'Tasks',
+            label: 'Tasks',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(left: 25.0),
+              child: Icon(Icons.chat_bubble),
             ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.only(left: 25.0), 
-                child: Icon(Icons.chat_bubble),
-              ),
-              label: 'Messages',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor:  const Color(0xFF7980FF), // Color when selected
-          unselectedItemColor: Colors.black, // Color when not selected
-          onTap: _onItemTapped,
-        ),
-
+            label: 'Messages',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color(0xFF7980FF),
+        unselectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+      ),
+    
               
             );
           }
@@ -680,20 +681,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Row(
                           children: [
-                            const Icon(Icons.calendar_today, size: 14),
+                            const Icon(Icons.calendar_today, size: 15),
                             const SizedBox(width: 4),
                             Text(date),
                           ],
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.chat_bubble, size: 14),
+                            const Icon(Icons.chat_bubble, size: 15),
                             const SizedBox(width: 4),
                             Text('$comments'),
                             const SizedBox(width: 16),
-                            const Icon(Icons.share, size: 14),
+                            const Icon(Icons.link, size: 14),
                             const SizedBox(width: 4),
-                            const Text('Share'),
+                            const Text('30'),
                           ],
                         ),
                       ],
@@ -721,11 +722,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Profile pictures and progress label + bar in a row
+                        
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // Profile pictures with reduced spacing
                             const Row(
                               children: [
                                 CircleAvatar(
@@ -733,7 +733,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       AssetImage('assets/images/person1.png'),
                                   radius: 12,
                                 ),
-                                SizedBox(width: 0), // Reduced spacing by 20px
+                                SizedBox(width: 0), 
                                 CircleAvatar(
                                   backgroundImage:
                                       AssetImage('assets/images/person2.png'),
@@ -747,7 +747,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             ),
-                            // Progress label and bar
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
@@ -765,14 +764,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Stack(
                                       children: [
                                         Container(
-                                          height: 8, // Thickness of the progress bar
+                                          height: 8, 
                                           decoration: BoxDecoration(
                                             color: Colors.blue[100],
                                             borderRadius: BorderRadius.circular(4),
                                           ),
                                         ),
                                         Container(
-                                          height: 6, // Thickness of the progress bar
+                                          height: 6, 
                                           width: progress * 2.5,
                                           decoration: BoxDecoration(
                                             color: Colors.blue,
@@ -785,7 +784,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                            // Progress percentage
+                            
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Text('$progress%'),
