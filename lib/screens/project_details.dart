@@ -158,7 +158,7 @@ TableRow(
                 TableRow(
                   children: [
                     _buildTitleWithIcon('Leader', Icons.person),
-                    Row(
+                    const Row(
                       children: [
                         CircleAvatar(
                           radius: 20,
@@ -184,25 +184,26 @@ TableRow(
                 
                 // Status Row
                 TableRow(
-                  children: [
-                    _buildTitleWithIcon('Status', Icons.assignment_turned_in),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                children: [
+                  _buildTitleWithIcon('Status', Icons.assignment_turned_in),
+                  Align(
+                    alignment: Alignment.centerLeft, 
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), 
                       decoration: BoxDecoration(
                         color: const Color(0xFFE91E63),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 80), // Reduced width
-                        child: const Text(
-                          'To Do',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      child: const Text(
+                        'To Do',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+
                 const TableRow(
                   children: [SizedBox(height: 16), SizedBox(height: 16)],
                 ),
